@@ -1,1 +1,5 @@
 .vagrant
+puppet/modules/apt/
+puppet/modules/concat/
+puppet/modules/postgresql/
+puppet/modules/stdlib/
