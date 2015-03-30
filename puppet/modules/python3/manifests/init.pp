@@ -19,7 +19,7 @@ class python3{
 		require => Class['system-update']
 	}->
 	exec{"configure-python":
-		command => 'sh configure --prefix=/opt.python3.4',
+		command => 'sh configure --prefix=/opt/python3.4',
 		cwd => '/home/vagrant/Python-3.4.2',
 		user => vagrant,
 		require => Class['system-update']
