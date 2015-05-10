@@ -38,4 +38,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppet.manifest_file = "database.pp"
     puppet.module_path = "puppet/modules"
   end
+
+  #
+  # webserver setup
+  config.vm.provision :puppet do |puppet|
+    puppet.manifests_path = "puppet/manifests"
+    puppet.manifest_file = "setup_webserver.pp"
+  end
 end
