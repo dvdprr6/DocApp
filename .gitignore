@@ -3,3 +3,4 @@ puppet/modules/apt/
 puppet/modules/concat/
 puppet/modules/postgresql/
 puppet/modules/stdlib/
+server/Bank.egg-info
