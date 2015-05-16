@@ -11,7 +11,7 @@ install_requires = [
 ]
 
 setup(
-	name='Bank',
+	name='Doctor-Appointment-App',
 	version=version,
 	description=('Application for doctors to manager their appointments with patients'),
 	author='David Parr',
@@ -19,6 +19,6 @@ setup(
 	packages=find_packages(),
 	install_requires=install_requires,
 	entry_points={
-		'console_scripts':['docsaptwebapp = apt.webserver:main']
+		'console_scripts':['docsaptwebapp = doctor.webserver:main']
 	}
 )
