@@ -7,4 +7,4 @@ server/Doctor_Appointment_App.egg-info
 server/data.sql
 server/data.db
 server/server.log
-server/output.log
+output.log
