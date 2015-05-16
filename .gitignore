@@ -3,4 +3,8 @@ puppet/modules/apt/
 puppet/modules/concat/
 puppet/modules/postgresql/
 puppet/modules/stdlib/
-server/Bank.egg-info
+server/Doctor_Appointment_App.egg-info
+server/data.sql
+server/data.db
+server/server.log
+server/output.log
