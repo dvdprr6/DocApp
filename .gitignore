@@ -8,3 +8,4 @@ server/data.sql
 server/data.db
 server/server.log
 output.log
+server/doctor/db/__pycache__/models.cpython-34.pyc
