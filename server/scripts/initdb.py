@@ -3,6 +3,8 @@ import logging
 import argparse
 import configparser
 from sqlalchemy import create_engine
+from alembic.config import Config
+from alembic import command
 
 from doctor.db.models import Base
 
@@ -20,7 +22,12 @@ def initialize_database(config, args):
 	db_url = config.get('sqlalchemy', 'url')
 	db_echo = config.getboolean('sqlalchemy', 'echo')
 	DbEngine = create_engine(db_url, echo=db_echo)
+	stamp_alembic_version(args)
 	Base.metadata.create_all(DbEngine)
+
+def stamp_alembic_version(args):
+	alembic_cfg = Config(args.config)
+	command.stamp(alembic_cfg, 'head')
 
 def main(argv=sys.argv):
 	parser = argparse.ArgumentParser(description='Doctor DB Init')
