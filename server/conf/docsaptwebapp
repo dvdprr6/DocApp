@@ -11,12 +11,18 @@ ConfigDirectory=/etc/docs_apt/docs.conf
 start(){
 	echo -n $"Starting $prog: "
 	daemon $UserDirectory/pyEnv/bin/docsaptwebapp --config=$ConfigDirectory &>> $MainDirectory/output.log 2>>$MainDirectory/server/server.log &
-	retval=$?
-
-	if [ 0 -eq $retval ] ; then
-		echo "OK."
+	
+	# Give the process a chance to start
+	sleep 5s
+	
+	local appid=$(ps aux | grep "$UserDirectory/pyEnv/bin/docsaptwebapp" | grep -v grep | grep -v /bin/bash | awk '{print $2}')
+	
+	if [ -n "$appid" ] ; then
+		echo "OK"
+		retval=$?
 	else
-		echo "ERROR."
+		echo "ERROR"
+		retval=1
 	fi
 
 	return $retval
@@ -26,7 +32,7 @@ stop(){
 	echo -n $"Stopping $prog: "
 	retval=0
 
-	appid=$(ps aux | grep "$UserDirectory/pyEnv/bin/docsaptwebapp" | grep -v grep | awk '{print $2}')
+	local appid=$(ps aux | grep "$UserDirectory/pyEnv/bin/docsaptwebapp" | grep -v grep | grep -v /bin/bash | awk '{print $2}')
 
 	if [ -n "$appid" ] ; then
 		sudo kill $appid
