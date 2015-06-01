@@ -35,6 +35,12 @@ class setup_webserver{
 		ensure => "file",
 		source => "file:///vagrant/server/conf/dev/docs.conf"
 	}->
+	exec{"init-database":
+		command => '/home/vagrant/pyEnv/bin/python scripts/initdb.py --config=/etc/docs_apt/docs.conf',
+		cwd => '/vagrant/server',
+		path => $work_path,
+		user => vagrant
+	}->
 	exec{"python-at-startup":
 		command => 'echo ". /home/vagrant/pyEnv/bin/activate" >> /home/vagrant/.bashrc',
 		cwd => '/home/vagrant',
