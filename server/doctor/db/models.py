@@ -13,6 +13,7 @@ Base = declarative_base()
 DbMetadata = Base.metadata
 
 DATE_FORMAT = '%Y-%m-%dT%H:%M:%S.%fZ'
+DOCTOR_REG_DATE_FORMAT = '%Y-%m-%d'
 
 doctors_patients_association = Table('doctors_patients', DbMetadata,
     Column('doctors_id', Integer, ForeignKey('doctors.id')),
@@ -39,6 +40,7 @@ class Doctors(Base):
     doctors_name = Column(String(255))
     specialist_id = Column(Integer, ForeignKey('specialist.id'))
     work_hours = Column(Integer, primary_key=False) # per week
+    registration_date = Column(DateTime, default=datetime.datetime.utcnow)
 
     doctors_patients_association = relationship('Patients', secondary=doctors_patients_association)
 
@@ -46,7 +48,9 @@ class Doctors(Base):
         return{
             'id':self.id,
             'doctors_name':self.doctors_name,
-            'specialist_id':self.specialist_id
+            'specialist_id':self.specialist_id,
+            'work_hours':self.work_hours,
+            'registration_date':self.registration_date.strftime(DOCTOR_REG_DATE_FORMAT)
         }
 
 class PatientStatus(Base):
