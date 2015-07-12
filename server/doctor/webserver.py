@@ -20,14 +20,6 @@ def parse_config(config_file):
     config.read(config_file)
     return config
 
-# class BaseRequestHandler(tornado.web.RequestHandler):
-#   def get(self):
-#       self.write("Hello, world")
-
-# application = tornado.web.Application([
-#   (r"/", BaseRequestHandler )
-# ])
-
 class WebApplication(tornado.web.Application):
 
     def __init__(self, config, main_loop=None):
