@@ -21,11 +21,11 @@ class DoctorRegistrationAPITestCase(BaseAppTestCase):
     def db(self):
         return self.get_app().db
 
-    def convert_byte_string_to_JSON(self, respons):
+    def convert_byte_string_to_JSON(self, response):
         return json.loads(response.body.decode('utf-8'))
 
-    def fetch_response(self, *args, **kwargs):
-        headers = self._autheticate_request()
+    def fetch_request(self, *args, **kwargs):
+        headers = self._authenticate_reuqest()
         headers['Content-Type'] = 'application/json'
         kwargs['headers'] = headers
         return self.fetch(*args, **kwargs)
