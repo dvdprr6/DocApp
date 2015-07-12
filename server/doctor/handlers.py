@@ -19,7 +19,6 @@ class BaseRequestHandler(tornado.web.RequestHandler):
 Doctor Registration API
 '''
 
-# from .doctor_registration.handlers import MainHandler
 from .doctor_registration.handlers import DoctorRegistrationHandler
 
 doctor_registration_api = [
