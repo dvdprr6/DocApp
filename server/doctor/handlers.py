@@ -22,5 +22,5 @@ Doctor Registration API
 from .doctor_registration.handlers import DoctorRegistrationHandler
 
 doctor_registration_api = [
-    (r'/doctor_registration/?', DoctorRegistrationHandler)
+    (r'/doctor_registration/create/?', DoctorRegistrationHandler)
 ]
