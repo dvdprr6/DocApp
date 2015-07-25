@@ -15,4 +15,7 @@ server/doctor/__pycache__/handlers.cpython-34.pyc
 server/doctor/db/alembic/versions/__pycache__/b38b44024c_doctors_have_maximum_work_hours_per_week.cpython-34.pyc
 server/doctor/doctor_registration/__pycache__/
 server/doctor/db/alembic/versions/__pycache__/3bf2ebc70e9_registration_date_to_doctors.cpython-34.pyc 
+server/tests/doctor_registration/__pycache__/
+server/doctor/__pycache_/
+server/doctor/db/__pycache__/
 DocApp_Notes
