@@ -6,10 +6,8 @@ from tornado.web import create_signed_value
 
 from tests.core import BaseAppTestCase
 
-from doctor.db.models import (
-    Doctors,
-    Specialist
-)
+from doctor.db.models import Doctors
+from doctor.db.models import Specialist
 
 from .test_data import INITIALIZE_DOCTOR_REGISTATION
 
@@ -49,13 +47,13 @@ class DoctorRegistrationTestCase(DoctorRegistrationAPITestCase):
 
     def setUp(self):
         super().setUp()
-        self._add_doctors_and_specialist_to_tables()
+        self.add_doctors_and_specialist_to_tables()
 
     def tearDown(self):
-        self._remove_doctors_and_specialists_from_tables()
+        self.remove_doctors_and_specialists_from_tables()
         super().tearDown()
 
-    def _add_doctors_and_specialist_to_tables(self):
+    def add_doctors_and_specialist_to_tables(self):
         for doctor_info in INITIALIZE_DOCTOR_REGISTATION:
             doctors_name = doctor_info['doctors_name']
             specialist_name = doctor_info['specialist_name']
@@ -88,7 +86,7 @@ class DoctorRegistrationTestCase(DoctorRegistrationAPITestCase):
         self._doctor_data_info = self.db.query(Doctors).all()
         self._specialist_data_info = self.db.query(Specialist).all()
 
-    def _remove_doctors_and_specialists_from_tables(self):
+    def remove_doctors_and_specialists_from_tables(self):
         for doctor in self._doctor_data_info:
             self.db.delete(doctor)
         self.db.commit()
@@ -98,3 +96,10 @@ class DoctorRegistrationTestCase(DoctorRegistrationAPITestCase):
             self.db.delete(specialist)
         self.db.commit()
         self._specialist_data_info = []
+
+class RetrieveAllDoctorRegistrationTestCase(DoctorRegistrationTestCase):
+        def setUp(self):
+            super().setUp()
+
+        def tearDown(self):
+            super().tearDown()
