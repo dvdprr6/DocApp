@@ -2,8 +2,18 @@ import logging
 import datetime
 import hashlib
 
-from sqlalchemy import (create_engine, Table, Column, Integer,
-    BigInteger, String, DateTime, Text, Boolean, Float, ForeignKey, desc)
+from sqlalchemy import create_engine
+from sqlalchemy import Table
+from sqlalchemy import Column
+from sqlalchemy import Integer
+from sqlalchemy import BigInteger
+from sqlalchemy import String
+from sqlalchemy import DateTime
+from sqlalchemy import Text
+from sqlalchemy import Boolean
+from sqlalchemy import Float
+from sqlalchemy import ForeignKey
+from sqlalchemy import desc
 from sqlalchemy.orm import relationship, column_property, backref
 from sqlalchemy.ext.declarative import declarative_base
 
