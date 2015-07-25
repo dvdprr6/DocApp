@@ -20,7 +20,12 @@ Doctor Registration API
 '''
 
 from .doctor_registration.handlers import DoctorRegistrationHandler
+from .doctor_registration.handlers import RetrieveAllDoctorRegistrationHandler
 
 doctor_registration_api = [
+    # (r'/doctor_registration/home/?', DoctorRegistrationHandler),
+    # (r'/doctor_registration/home/create/?', DoctorRegistrationHandler)
+    #(?P<id>[a-zA-Z0-9_]+)/?$
+    (r'/doctor_registration/?', RetrieveAllDoctorRegistrationHandler),
     (r'/doctor_registration/create/?', DoctorRegistrationHandler)
 ]
