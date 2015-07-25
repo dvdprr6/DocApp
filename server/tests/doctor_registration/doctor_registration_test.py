@@ -2,16 +2,15 @@ import json
 import datetime
 
 from doctor.db.models import (Doctors, Specialist)
-from .common import DoctorRegistrationTestCase
 from .common import DoctorRegistrationAPITestCase
+from .common import DoctorRegistrationTestCase
+from .common import RetrieveAllDoctorRegistrationTestCase
 
-from .test_data import (
-    ENDPOINTS,
-    TEST_REGISTER_DOCTOR_FRANK,
-    TEST_EXPECTED_RETURN_DOCTOR,
-    TEST_EXPECTED_RETURN_SPECIALIST,
-    TEST_DUBLICATE_REGISTER_DOCTOR_MARIO
-)
+from .test_data import ENDPOINTS
+from .test_data import TEST_REGISTER_DOCTOR_FRANK
+from .test_data import TEST_EXPECTED_RETURN_DOCTOR
+from .test_data import TEST_EXPECTED_RETURN_SPECIALIST
+from .test_data import TEST_DUBLICATE_REGISTER_DOCTOR_MARIO
 
 # solves the issue where the date can't be json serialized
 def serialize_date(obj):
@@ -61,3 +60,17 @@ class TestRegisterDoctors(DoctorRegistrationTestCase):
         )
 
         self.assertEqual(response.code, 409)
+
+class TestRetrieveAllDoctorsRegistration(RetrieveAllDoctorRegistrationTestCase):
+
+    '''Standard cases on /doctor_registration/'''
+
+    def test_get_all_doctors(self):
+        request_url = ENDPOINTS['home']
+
+        response = self.fetch_request(
+            request_url,
+            method='GET'
+        )
+
+        self.assertEqual(response.code, 200)
